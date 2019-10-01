@@ -30,13 +30,11 @@ function parseMenu(jsonObj) {
         console.log(i);
         navBar.innerHTML += navBar.innerHTML = `<ul class="nav navbar-nav">
                   <li class="nav-item dropdown">
-                  <a href="#${jsonObj[i].id}" class="nav-link dropdown-toggle" data-toggle="dropdown">${jsonObj[i].countryname}</a>
-                  
-                  <div class="dropdown-menu"></div></li></ul>`;
-                  console.log(i);
-                  let stad = document.getElementByClassName("dropdown-menu");
-                  stad.innerHTML += stad.innerHTML = `<a href="#" class="dropdown-item">Inbox</a>`;
-                  console.log(i);
+                  <a href="#${jsonObj[i].countryname}" id="${jsonObj[i].id}" onClick="getTowns(this.id)" class="nav-link dropdown-toggle" data-toggle="dropdown">${jsonObj[i].countryname}</a><div id="div${jsonObj[i].id}" div class="dropdown-menu" onClick="alert(this.id)"></div></li></ul>`;
+                //   console.log(i);
+                //   let stad = document.getElementByClassName("dropdown-menu");
+                //   stad.innerHTML += stad.innerHTML = `<a href="#" class="dropdown-item">Inbox</a>`;
+                //   console.log(i);
                 //   fetch("json/stad.json").then(function(response) {
                 //     return response.json();
                 //   }).then(function(json) {
@@ -47,6 +45,15 @@ function parseMenu(jsonObj) {
 
 //parseMenu();
 
+function getTowns (id){
+    console.log(id);
+    let towns = document.getElementById("div"+id);
+    console.log(towns);
+    towns.innerHTML = "hej";
+    //get
+    //id.append = '<div class="dropdown-menu">Hej</div>';
+//<div class="dropdown-menu"></div>
+}
 readJson("json/land.json");
 
 
