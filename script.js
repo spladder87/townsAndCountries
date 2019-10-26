@@ -1,9 +1,14 @@
 let navBar = document.getElementById('navbarCollapse');
 
+let countryApiUrl = "https://nodetownandcountries.azurewebsites.net/api/countries";
+let townsApiUrl = "https://nodetownandcountries.azurewebsites.net/api/towns";
+
+
 var visitedTowns = [];
 
-function readJson(url) {
-    fetch(url)
+function readJson(countryApiUrl) {
+    fetch(countryApiUrl)
+    
         .then(
             function (response) {
                 if (response.status !== 200) {
@@ -40,7 +45,7 @@ function readJson(url) {
 function getTowns(id) {
     let towns = document.getElementById("div" + id);
 
-    fetch("json/stad.json").then(function (response) {
+    fetch(townsApiUrl).then(function (response) {
         return response.json();
     }).then(function (json) {
         // do a bunch of stuff
@@ -56,7 +61,7 @@ function getTowns(id) {
 
 function setView(viewID) {
     let townView = document.getElementById("townView");
-    fetch("json/stad.json").then(function (response) {
+    fetch(townsApiUrl).then(function (response) {
         return response.json();
     }).then(function (json) {
         // do a bunch of stuff
@@ -83,7 +88,7 @@ function visitedTownView() {
     visitedTowns = JSON.parse(storedString);
     visitedTowns = [...new Set(visitedTowns)];
 
-    fetch("json/stad.json").then(function (response) {
+    fetch(townsApiUrl).then(function (response) {
         return response.json();
     }).then(function (json) {
         // do a bunch of stuff
@@ -107,5 +112,5 @@ function visitedTownView() {
     })
 }
 
-readJson("json/land.json");
+readJson(countryApiUrl);
 
